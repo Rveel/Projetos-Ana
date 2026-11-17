@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trajetórias em Libras - Exposição da Consciência Negra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="site-header" id="topo">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Trajetórias <span aria-hidden="true">/</span> em Libras</span>
+    </div>
+    <span class="header-note">Exposição da Consciência Negra</span>
+  </header>
+
+  <main>
+    <!-- SEÇÃO 1: APRESENTAÇÃO -->
+    <section id="inicio" class="hero" aria-labelledby="home-title">
+      <div class="hero-grid">
+        
+        <!-- QUADRO PRINCIPAL COM A IMAGEM OFICIAL -->
+        <div class="poster-wrap">
+          <img 
+            id="cartaz-principal" 
+            class="poster" 
+            src="midias/cartaz-trajetorias.png" 
+            alt="Cartaz da exposição Trajetórias: História afro-brasileira: memória, resistência e futuro - Biblioteca Senac Barretos"
+          >
+        </div>
+
+        <!-- COLUNA DE TEXTO E VÍDEO EM LIBRAS -->
+        <div class="hero-content">
+          <p class="eyebrow">Exposição em Libras</p>
+          <h1 id="home-title" tabindex="-1">Traje<span>tórias</span></h1>
+          <p class="subtitle">História afro-brasileira: memória, resistência e futuro.</p>
+          
+          <p class="intro-copy">Esta exposição é um convite para conhecer a história afro-brasileira por diferentes vozes e perspectivas.</p>
+          <p class="intro-copy">Aqui, você vai encontrar um percurso que passa pela ancestralidade africana, pela resistência durante a escravização, pelas conquistas de direitos, pelas personalidades que marcaram o Brasil e pelo protagonismo negro no presente.</p>
+          
+          <div class="divider" aria-hidden="true"></div>
+          
+          <div class="libras-card" aria-label="Tradução da introdução em Libras">
+            <div class="card-top">
+              <i data-lucide="scan-face" aria-hidden="true"></i>
+              <span>Introdução em Libras</span>
+            </div>
+            <div class="video-space has-video" id="video-intro-space">
+              <video 
+                id="video-intro"
+                controls 
+                preload="metadata" 
+                playsinline 
+                aria-label="Vídeo introdutório da exposição Trajetórias em Libras"
+              >
+                <source src="midias/introdução.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeos.
+              </video>
+            </div>
+          </div>
+
+          <a href="#exibicao" id="abrir-exposicao" class="cta">
+            Assistir à exposição <i data-lucide="arrow-down" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIVISÓRIA ENTRE AS SEÇÕES -->
+    <div class="section-separator" aria-hidden="true"></div>
+
+    <!-- SEÇÃO 2: PERCURSO DA EXPOSIÇÃO (4 CARTAZES) -->
+    <section id="exibicao" class="exhibition" aria-labelledby="exhibition-title">
+      <div class="exhibition-inner">
+        
+        <div class="exhibition-heading">
+          <p class="eyebrow">Percurso da exposição</p>
+          <h2 id="exhibition-title" tabindex="-1">A exposição em Libras</h2>
+        </div>
+
+        <div class="exhibit-grid">
+          <!-- CARTAZ 01 -->
+          <article class="exhibit-card" aria-labelledby="cartaz-1-title">
+            <p class="exhibit-number">Cartaz 01</p>
+            <h3 id="cartaz-1-title">Tradução do cartaz 01</h3>
+            <div class="video-space has-video" id="video-intro-space">
+              <video 
+                id="video-intro"
+                controls 
+                preload="metadata" 
+                playsinline 
+                aria-label="Vídeo introdutório da exposição Trajetórias em Libras">
+                <source src="midias/Tradução do cartaz 01.mp4" type="video/mp4">
+              </video>
+            </div>
+          </article>
+
+          <!-- CARTAZ 02 -->
+          <article class="exhibit-card" aria-labelledby="cartaz-2-title">
+            <p class="exhibit-number">Cartaz 02</p>
+            <h3 id="cartaz-2-title">Tradução do cartaz 02</h3>
+            <div class="video-space has-video" id="video-intro-space">
+              <video 
+                id="video-intro"
+                controls 
+                preload="metadata" 
+                playsinline 
+                aria-label="Vídeo introdutório da exposição Trajetórias em Libras">
+                <source src="midias/Tradução do cartaz 02.mp4" type="video/mp4">
+              </video>
+            </div>
+          </article>
+
+          <!-- CARTAZ 03 -->
+          <article class="exhibit-card" aria-labelledby="cartaz-3-title">
+            <p class="exhibit-number">Cartaz 03</p>
+            <h3 id="cartaz-3-title">Tradução do cartaz 03</h3>
+            <div class="video-space">
+              <i data-lucide="video-off" aria-hidden="true"></i>
+              <strong>Vídeo em Libras não fornecido</strong>
+              <small>Área reservada para a tradução deste cartaz.</small>
+            </div>
+            <p class="translation-label">Texto correspondente</p>
+            <p class="translation-note">O texto deste cartaz ainda não foi fornecido.</p>
+          </article>
+
+          <!-- CARTAZ 04 -->
+          <article class="exhibit-card" aria-labelledby="cartaz-4-title">
+            <p class="exhibit-number">Cartaz 04</p>
+            <h3 id="cartaz-4-title">Tradução do cartaz 04</h3>
+            <div class="video-space">
+              <i data-lucide="video-off" aria-hidden="true"></i>
+              <strong>Vídeo em Libras não fornecido</strong>
+              <small>Área reservada para a tradução deste cartaz.</small>
+            </div>
+            <p class="translation-label">Texto correspondente</p>
+            <p class="translation-note">O texto deste cartaz ainda não foi fornecido.</p>
+          </article>
+        </div>
+
+        <!-- BOTÃO DE RETORNO NO FINAL DA EXPOSIÇÃO -->
+        <div class="exhibition-footer-nav">
+          <a href="#topo" class="back-top-inline">
+            <i data-lucide="arrow-up" aria-hidden="true"></i> Voltar ao início da página
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- BOTÃO FLUTUANTE PARA VOLTAR AO TOPO -->
+  <button id="btn-topo" class="scroll-top-btn" type="button" aria-label="Voltar ao topo" title="Voltar ao topo">
+    <i data-lucide="arrow-up" aria-hidden="true"></i>
+    <span>Topo</span>
+  </button>
+
+  <!-- RODAPÉ -->
+  <div class="pattern" aria-hidden="true"></div>
+  <footer>
+    <div>
+      TRAJETÓRIAS - HISTÓRIA AFRO-BRASILEIRA EM LIBRAS
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
