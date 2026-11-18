@@ -24,10 +24,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
-
 main {
   flex: 1;
+  width: 100%;
 }
 
 button, a.cta, a.back-top-inline {
@@ -88,7 +89,7 @@ button:focus-visible, a:focus-visible {
 /* --- SEÇÃO 1: HERO --- */
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: clamp(35px, 6vw, 82px) clamp(22px, 5vw, 76px) 80px;
 }
 
@@ -114,7 +115,7 @@ button:focus-visible, a:focus-visible {
   align-items: center;
 }
 
-/* --- MOLDURA DO CARTAZ --- */
+/* --- MOLDURA DO CARTAZ PRINCIPAL --- */
 .poster-wrap {
   position: relative;
   padding: 13px;
@@ -122,6 +123,12 @@ button:focus-visible, a:focus-visible {
   box-shadow: 20px 22px 0 var(--terra), 0 22px 55px rgba(44, 28, 23, 0.18);
   max-width: 430px;
   width: 100%;
+  cursor: zoom-in;
+  z-index: 10;
+}
+
+.poster-wrap:hover {
+  z-index: 999;
 }
 
 .poster-wrap:before {
@@ -133,6 +140,28 @@ button:focus-visible, a:focus-visible {
   height: 65px;
   border-left: 4px solid var(--green);
   border-top: 4px solid var(--green);
+  pointer-events: none;
+}
+
+.poster-wrap::after {
+  content: "Passe o mouse para ler";
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  background: rgba(23, 62, 50, 0.92);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid var(--orange);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.poster-wrap:hover::after {
+  opacity: 0;
 }
 
 .poster {
@@ -141,6 +170,16 @@ button:focus-visible, a:focus-visible {
   height: auto;
   aspect-ratio: 389 / 550;
   object-fit: cover;
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.poster-wrap:hover .poster,
+.poster-wrap:hover img {
+  transform: scale(1.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+  border: 3px solid var(--paper);
 }
 
 /* --- COLUNA DIREITA --- */
@@ -309,15 +348,178 @@ h1 span {
   height: 19px;
 }
 
-/* --- DIVISÓRIA ENTRE AS DUAS SEÇÕES --- */
+/* --- DIVISÓRIA ENTRE AS SEÇÕES --- */
 .section-separator {
+  width: calc(100% - clamp(44px, 10vw, 152px));
   max-width: 1200px;
   margin: 0 auto;
   height: 1px;
   background: var(--line);
 }
 
-/* --- SEÇÃO 2: EXIBIÇÃO --- */
+/* --- SEÇÃO: ESTAÇÕES EM FORMATO HERO EDITORIAL (CENTRALIZADA) --- */
+.estacoes-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(50px, 7vw, 85px) clamp(24px, 5vw, 60px) 90px;
+}
+
+.estacoes-section .container {
+  width: 100%;
+  margin: 0 auto;
+}
+.section-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: clamp(40px, 5.5vw, 68px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+}
+
+.estacao-hero {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.estacao-hero:last-child {
+  border-bottom: none;
+}
+
+/* Alterna os lados nas estações pares */
+.estacao-hero.is-reversed {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.estacao-hero.is-reversed .estacao-poster {
+  order: 2;
+}
+
+.estacao-hero.is-reversed .estacao-info {
+  order: 1;
+}
+
+/* Cartaz com efeito de inflar para o centro da tela */
+.estacao-poster {
+  position: relative;
+  overflow: visible;
+  cursor: zoom-in;
+  z-index: 10;
+  padding: 10px;
+  background: var(--paper);
+  box-shadow: 12px 14px 0 var(--terra), 0 14px 34px rgba(44, 28, 23, 0.14);
+}
+
+.estacao-poster:hover {
+  z-index: 999;
+}
+
+.estacao-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--paper);
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+/* Nas estações pares (cartaz à direita), infla para a esquerda */
+.estacao-hero.is-reversed .estacao-poster img {
+  transform-origin: right center;
+}
+
+.estacao-poster:hover img {
+  transform: scale(1.25);
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.6);
+}
+
+.estacao-poster::after {
+  content: "Passe o mouse para ler";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(23, 62, 50, 0.92);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid var(--orange);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.estacao-poster:hover::after {
+  opacity: 0;
+}
+
+/* Coluna de Texto + Vídeo em Libras */
+.estacao-tag {
+  display: inline-block;
+  background: var(--terra);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  margin-bottom: 14px;
+}
+
+.estacao-info h3 {
+  font-size: clamp(26px, 3vw, 38px);
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+  line-height: 1.12;
+}
+
+.estacao-info p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 24px;
+  color: #59463a;
+}
+
+.estacao-video {
+  position: relative;
+  background: #140e0c;
+  border: 2px solid var(--green);
+  box-shadow: 0 12px 28px rgba(44, 28, 23, 0.14);
+}
+
+.estacao-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background-color: #000;
+}
+
+.libras-badge {
+  display: block;
+  background: var(--green);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+}
+
+/* --- SEÇÃO 2: EXIBIÇÃO (CASO MANTIDA) --- */
 .exhibition {
   padding: clamp(50px, 7vw, 85px) clamp(22px, 5vw, 76px) 90px;
 }
@@ -426,7 +628,7 @@ h1 span {
   position: fixed;
   right: 24px;
   bottom: 24px;
-  z-index: 50;
+  z-index: 9999;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -490,21 +692,47 @@ footer div {
 }
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 850px) {
+@media (max-width: 860px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 58px;
   }
+
   .poster-wrap {
     width: min(100% - 20px, 390px);
     margin: auto;
   }
+
+  .poster,
+  .estacao-poster img,
+  .estacao-hero.is-reversed .estacao-poster img {
+    transform-origin: center center;
+  }
+
+  .poster-wrap:hover .poster,
+  .poster-wrap:hover img,
+  .estacao-poster:hover img {
+    transform: scale(1.06);
+  }
+
   .hero-content {
     max-width: 650px;
     margin: auto;
   }
+
   .exhibit-grid {
     grid-template-columns: 1fr;
+  }
+
+  .estacao-hero,
+  .estacao-hero.is-reversed {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .estacao-hero.is-reversed .estacao-poster,
+  .estacao-hero.is-reversed .estacao-info {
+    order: initial;
   }
 }
 
@@ -512,18 +740,24 @@ footer div {
   .header-note {
     display: none;
   }
+
   .hero {
     padding-bottom: 55px;
   }
-  .poster-wrap {
-    box-shadow: 13px 15px 0 var(--terra), 0 18px 35px rgba(44, 28, 23, 0.15);
+
+  .poster-wrap,
+  .estacao-poster {
+    box-shadow: 10px 12px 0 var(--terra), 0 18px 35px rgba(44, 28, 23, 0.15);
   }
+
   .exhibit-card {
     padding: 16px;
   }
+
   .cta {
     width: 100%;
   }
+
   .scroll-top-btn {
     right: 16px;
     bottom: 16px;
