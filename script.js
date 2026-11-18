@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const btnAbrir = document.getElementById('abrir-exposicao');
   const btnTopo = document.getElementById('btn-topo');
-  const secaoExibicao = document.getElementById('exibicao');
+  const secaoEstacoes = document.getElementById('estacoes');
   const videoIntro = document.getElementById('video-intro');
 
   // Navegação suave ao clicar em "Assistir à exposição"
-  btnAbrir.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (videoIntro && !videoIntro.paused) {
-      videoIntro.pause();
-    }
-    secaoExibicao.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  if (btnAbrir && secaoEstacoes) {
+    btnAbrir.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (videoIntro && !videoIntro.paused) {
+        videoIntro.pause();
+      }
+      secaoEstacoes.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
   // Controla a visibilidade do botão flutuante "Voltar ao topo"
   const toggleScrollButton = () => {
